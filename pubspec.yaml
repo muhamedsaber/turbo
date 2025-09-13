@@ -37,6 +37,10 @@ dependencies:
   dio: ^5.9.0
   retrofit: ^4.7.2
   retrofit_generator: ^10.0.4
+  build_runner: ^2.8.0
+  flutter_bloc: ^9.1.1
+  get_it: ^8.2.0
+  pretty_dio_logger: ^1.4.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

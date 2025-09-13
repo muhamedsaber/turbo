@@ -8,6 +8,7 @@ class AppTextField extends StatelessWidget {
   final TextEditingController controller;
   final Widget? suffixIcon;
   final String? errorText;
+  final String? Function(String?)? validator;
 
   const AppTextField({
     super.key,
@@ -17,6 +18,7 @@ class AppTextField extends StatelessWidget {
     required this.controller,
     this.suffixIcon,
     this.errorText,
+     this.validator
   });
 
   @override
@@ -27,13 +29,15 @@ class AppTextField extends StatelessWidget {
         Text(label,
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
         const SizedBox(height: 6),
-        TextField(
+        TextFormField(
+        validator: validator,
           controller: controller,
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
           },
           obscureText: obscureText,
           decoration: InputDecoration(
+            
             hintText: hintText,
             suffixIcon: suffixIcon,
             errorText: errorText,

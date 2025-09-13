@@ -18,6 +18,13 @@ class _PasswordTextfieldState extends State<PasswordTextfield> {
       label: "Password",
       controller: widget.controller,
       obscureText: !isPasswordVisible,
+      validator: (value) {
+        if (value==null||value.isEmpty) {
+          return "Invalid password";
+        }else{
+          return null;
+        }
+      },
       suffixIcon: IconButton(
         icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off),
         onPressed: () {
