@@ -1,11 +1,16 @@
 import 'package:flutter/widgets.dart';
 
 class ApiErrorModel {
-  final String message;
-  final IconData icon;
-  final int statusCode;
+  final int? statusCode;
+  final String? message;
+  final List<String> errors;
+  final IconData? icon;
+
+  ApiErrorModel({
+    required this.statusCode,
+    required this.message,
+    required this.errors,
+    required this.icon
+  });
   
-
-  ApiErrorModel({required this.message, required this.icon, required this.statusCode});
-
 }

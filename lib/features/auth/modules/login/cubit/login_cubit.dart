@@ -10,6 +10,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit({required this.repo}) : super(LoginInitial());
   final AuthRepo repo;
   login(LoginRequestBody body) async {
+    emit(LoginLoading());
     final result = await repo.login(body);
     result.when(
       onSuccess: (data) {

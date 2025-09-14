@@ -32,25 +32,6 @@ class LoginView extends StatelessWidget {
 
                 const SizedBox(height: 30),
                 LoginForm(),
-                const SizedBox(height: 20),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don’t have an account? "),
-                      GestureDetector(
-                        onTap: () {},
-                        child: const Text(
-                          "Register",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

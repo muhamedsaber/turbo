@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:turbo/config/router/app_router.dart';
 import 'package:turbo/config/router/routes.dart';
@@ -5,6 +6,7 @@ import 'package:turbo/core/di.dart';
 
 void main() {
   setupDependencies();
+ 
   runApp(const MyApp());
 }
 
@@ -20,3 +22,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

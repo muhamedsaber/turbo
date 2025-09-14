@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:turbo/core/common_ui/widgets/app_elevated_button.dart';
 import 'package:turbo/core/common_ui/widgets/app_text_field.dart';
 import 'package:turbo/features/auth/data/models/login_request_body.dart';
 import 'package:turbo/features/auth/modules/common/password_textfield.dart';
 import 'package:turbo/features/auth/modules/login/cubit/login_cubit.dart';
+import 'package:turbo/features/auth/modules/login/widgets/login_bloc_listener.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -54,33 +56,45 @@ class _LoginFormState extends State<LoginForm> {
             ],
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                log("here");
-                if (formKey.currentState!.validate()) {
-                  context.read<LoginCubit>().login(
-                    LoginRequestBody(
-                      email: emailController.text,
-                      password: passwordController.text,
+          BlocBuilder<LoginCubit, LoginState>(
+            builder: (context, state) {
+              return AppElevatedButton(
+                isLoading: state is LoginLoading,
+                onPressed: () {
+                  log("here");
+                  if (formKey.currentState!.validate()) {
+                    context.read<LoginCubit>().login(
+                      LoginRequestBody(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      ),
+                    );
+                  }
+                },
+                title: "Login",
+              );
+            },
+          ),
+          const SizedBox(height: 20),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Don’t have an account? "),
+                GestureDetector(
+                  onTap: () {},
+                  child: const Text(
+                    "Register",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
-                  );
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-              ),
-              child: const Text(
-                "Login",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
+              ],
             ),
           ),
+          LoginBlocListener()
         ],
       ),
     );
