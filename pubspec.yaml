@@ -41,6 +41,8 @@ dependencies:
   flutter_bloc: ^9.1.1
   get_it: ^8.2.0
   pretty_dio_logger: ^1.4.0
+  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.5.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

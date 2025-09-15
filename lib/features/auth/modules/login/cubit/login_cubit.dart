@@ -13,7 +13,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
     final result = await repo.login(body);
     result.when(
-      onSuccess: (data) {
+      onSuccess: (data) async {
         emit(LoginSuccess());
       },
       onError: (error) {

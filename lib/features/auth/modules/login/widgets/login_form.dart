@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:turbo/core/common_ui/widgets/app_elevated_button.dart';
@@ -19,6 +20,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -94,7 +96,7 @@ class _LoginFormState extends State<LoginForm> {
               ],
             ),
           ),
-          LoginBlocListener()
+          LoginBlocListener(),
         ],
       ),
     );

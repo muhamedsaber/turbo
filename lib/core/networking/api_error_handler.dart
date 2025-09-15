@@ -55,7 +55,7 @@ class ApiErrorHandler {
               });
             }
             return ApiErrorModel(
-              statusCode: e.response?.data["statusCode"],
+              statusCode: e.response?.statusCode,
               message: e.response?.data["message"],
               errors: errorsList,
               icon: Icons.error,
@@ -75,9 +75,7 @@ class ApiErrorHandler {
             errors: [],
           ),
         );
-      } else {
-        return ApiErrorFactory.defaultError;
-      }
+      } 
     }
     return ApiErrorFactory.defaultError;
   }
